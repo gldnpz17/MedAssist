@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="MedAssistUI.Views.PharmacyMedWalletView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MedAssistUI.Views"
+             mc:Ignorable="d" FontSize="17"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid Grid.Row="3" Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Transaction History"
+                               FontWeight="Bold"/>
+
+            <Button Grid.Row="1" Content="Refresh" Margin="2" Padding="5,2"
+                            Command="{Binding RefreshTransactions}"
+                            HorizontalAlignment="Left"/>
+
+            <ListView Grid.Row="2" HorizontalAlignment="Stretch" 
+                              VerticalAlignment="Stretch"
+                              ItemsSource="{Binding TransactionModels}">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="True">
+                        <GridViewColumn Header="ID" Width="70"
+                                        DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Description" Width="330"
+                                        DisplayMemberBinding="{Binding Description}"/>
+                        <GridViewColumn Header="Balance Change" Width="170"
+                                        DisplayMemberBinding="{Binding ChangeInBalance}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </Grid>
+</UserControl>

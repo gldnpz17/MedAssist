@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventAggregatorLibrary", "EventAggregatorLibrary\EventAggregatorLibrary.csproj", "{10C67C42-366C-439B-BEB1-6D65AD39CDFD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IoCContainerLibrary", "IoCContainerLibrary\IoCContainerLibrary.csproj", "{C3A54E86-922F-44A2-AD8C-F62BA218DA74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedAssistUI", "MedAssistUI\MedAssistUI.csproj", "{55551574-D2BA-4A77-9379-5E701DFF2E81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessV3", "DataAccessV3\DataAccessV3.csproj", "{F8F53871-4CD7-447B-83A1-4EFC5518DAD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicV3", "BusinessLogicV3\BusinessLogicV3.csproj", "{D46AC8DD-B637-4829-9767-91FC748171E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputMedicationConsole", "InputMedicationConsole\InputMedicationConsole.csproj", "{9CFA7994-CB31-4C77-82E7-CC411236B822}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10C67C42-366C-439B-BEB1-6D65AD39CDFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10C67C42-366C-439B-BEB1-6D65AD39CDFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10C67C42-366C-439B-BEB1-6D65AD39CDFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10C67C42-366C-439B-BEB1-6D65AD39CDFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3A54E86-922F-44A2-AD8C-F62BA218DA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A54E86-922F-44A2-AD8C-F62BA218DA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A54E86-922F-44A2-AD8C-F62BA218DA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A54E86-922F-44A2-AD8C-F62BA218DA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55551574-D2BA-4A77-9379-5E701DFF2E81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55551574-D2BA-4A77-9379-5E701DFF2E81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55551574-D2BA-4A77-9379-5E701DFF2E81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55551574-D2BA-4A77-9379-5E701DFF2E81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F53871-4CD7-447B-83A1-4EFC5518DAD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F53871-4CD7-447B-83A1-4EFC5518DAD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F53871-4CD7-447B-83A1-4EFC5518DAD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F53871-4CD7-447B-83A1-4EFC5518DAD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D46AC8DD-B637-4829-9767-91FC748171E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D46AC8DD-B637-4829-9767-91FC748171E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D46AC8DD-B637-4829-9767-91FC748171E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D46AC8DD-B637-4829-9767-91FC748171E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CFA7994-CB31-4C77-82E7-CC411236B822}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CFA7994-CB31-4C77-82E7-CC411236B822}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CFA7994-CB31-4C77-82E7-CC411236B822}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CFA7994-CB31-4C77-82E7-CC411236B822}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D895AD1C-FFF1-4F72-A021-AB32E10C2B5E}
+	EndGlobalSection
+EndGlobal

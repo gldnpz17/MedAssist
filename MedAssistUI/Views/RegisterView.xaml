@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="MedAssistUI.Views.RegisterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MedAssistUI.Views"
+             xmlns:converters="clr-namespace:MedAssistUI.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:TwoPasswordBoxConverter x:Key="TwoPasswordBoxConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <ScrollViewer FontSize="17">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Register to MedAssist" Grid.Column="1"
+                           Grid.Row="1" Grid.ColumnSpan="2" FontSize="37"
+                           HorizontalAlignment="Center"/>
+
+                <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--Identity-->
+                    <TextBlock Text="Identity" FontWeight="Bold" Grid.Column="1"
+                           Grid.ColumnSpan="2" Grid.Row="0" Margin="0,10,0,0"/>
+
+                    <TextBlock Text="Username" Grid.Column="1" Grid.Row="1"
+                           Margin="0,5,5,0"/>
+                    <TextBox Grid.Column="2" Grid.Row="1" Margin="0,5,0,0"
+                             Width="250" Text="{Binding Username, Mode=OneWayToSource}"/>
+                    <!--Security-->
+                    <TextBlock Text="Security" FontWeight="Bold" Grid.Column="1"
+                           Grid.ColumnSpan="2" Grid.Row="3" Margin="0,10,0,0"/>
+
+                    <TextBlock Text="Password" Grid.Column="1" Grid.Row="4"
+                           Margin="0,5,5,0"/>
+                    <PasswordBox x:Name="PwdBox_Password" Grid.Column="2" 
+                                 Grid.Row="4" Margin="0,5,0,0" Width="250"/>
+                </Grid>
+                <StackPanel Orientation="Horizontal" Grid.Column="1"
+                            Grid.ColumnSpan="2" Grid.Row="8"
+                            Margin="0,10,0,0">
+                    <Button Content="Register" Margin="0,5,0,5" Padding="5,3"
+                            IsDefault="True" Command="{Binding MedAssistRegisterCommand}"
+                            CommandParameter="{Binding ElementName=PwdBox_Password}"/>
+                    <Button Content="Cancel" Margin="5" Padding="5,3"
+                            Command="{Binding MedAssistCancelRegisterCommand}"/>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>        
+    </Grid>
+</UserControl>

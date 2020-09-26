@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="MedAssistUI.Views.MedicationRequestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MedAssistUI.Views"
+             xmlns:cv="clr-namespace:MedAssistUI.Converters"
+             mc:Ignorable="d" FontSize="17"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <cv:MedicationIdToNameConverter x:Key="MedicationIdToNameConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Medication Requests" FontSize="27"
+                       FontWeight="Bold"/>
+
+            <ListView x:Name="LstView_MedicationRequests" Grid.Row="1" HorizontalAlignment="Stretch" Margin="5"
+                      VerticalAlignment="Stretch"
+                      ItemsSource="{Binding MedicationRequestModels}">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="True">
+                        <GridViewColumn Header="ID" Width="50"
+                                        DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Medication" Width="200"
+                                        DisplayMemberBinding="{Binding MedicationId, Converter={StaticResource MedicationIdToNameConverter}}"/>
+                        <GridViewColumn Header="Amount" Width="100"
+                                        DisplayMemberBinding="{Binding Amount}"/>
+                        <GridViewColumn Header="Latitude" Width="150"
+                                        DisplayMemberBinding="{Binding Latitude}"/>
+                        <GridViewColumn Header="Longitude" Width="150"
+                                        DisplayMemberBinding="{Binding Longitude}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <Button Content="Mark as Done" Width="150" Margin="5"
+                        Padding="5,2" Command="{Binding MarkAsDone}"
+                        CommandParameter="{Binding ElementName=LstView_MedicationRequests, Path=SelectedItem}"/>
+
+                <Button Content="Refresh" Width="150" Margin="5"
+                        Padding="5,2" Command="{Binding RefreshRequests}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="MedAssistUI.Views.CheckoutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MedAssistUI.Views"
+             mc:Ignorable="d" FontSize="17"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+
+            <!--background-->
+            <Grid Grid.ColumnSpan="3" Grid.RowSpan="3" Panel.ZIndex="0"
+                  Background="Black" Opacity="0.7"/>
+            
+            <Grid Grid.Column="1" Grid.Row="1" Panel.ZIndex="1"
+                  Background="White" HorizontalAlignment="Stretch">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Checkout" 
+                               FontSize="27" FontWeight="Bold"/>
+
+                    <!--cart items-->
+                    <TextBlock Grid.Row="1" Text="Items in Your Cart :"/>
+                    <ListView x:Name="LstView_CartItems" Grid.Row="2" Margin="5" 
+                              ItemsSource="{Binding MedicationRequests}"
+                              HorizontalContentAlignment="Stretch"
+                              ScrollViewer.CanContentScroll="False"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"
+                                            HorizontalAlignment="Stretch"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!--product image-->
+                                    <Image Grid.Column="0" Grid.Row="0" 
+                                           Height="100" Width="75" Margin="3,0,3,0" 
+                                           Source="{Binding Medication.Image}"
+                                           VerticalAlignment="Top"/>
+
+                                    <!--product details-->
+                                    <Grid Grid.Column="1" Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Column="0" Grid.Row="0"
+                                                   Text="Product Name" Margin="2,0"/>
+                                        <TextBlock Grid.Column="1" Grid.Row="0" 
+                                                   Text=":" Margin="2,0"/>
+                                        <TextBlock Grid.Column="2" Grid.Row="0" 
+                                                   Text="{Binding Medication.Name}" 
+                                                   Margin="2,0" TextWrapping="Wrap"/>
+
+                                        <TextBlock Grid.Column="0" Grid.Row="1"
+                                                   Text="Price per Item"
+                                                   Margin="2,0"/>
+                                        <TextBlock Grid.Column="1" Grid.Row="1"
+                                                   Text=":" Margin="2,0"/>
+                                        <TextBlock Grid.Column="2" Grid.Row="1"
+                                                   Text="{Binding Medication.Price}"
+                                                   Margin="2,0" TextWrapping="Wrap"/>
+
+                                        <TextBlock Grid.Column="0" Grid.Row="2"
+                                                   Text="Amount" Margin="2,0"/>
+                                        <TextBlock Grid.Column="1" Grid.Row="2"
+                                                   Text=":" Margin="2,0"/>
+                                        <TextBlock Grid.Column="2" Grid.Row="2"
+                                                   Text="{Binding Amount}"
+                                                   Margin="2,0" TextWrapping="Wrap"/>
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    
+                    <!--total-->
+                    <StackPanel Grid.Row="3" Orientation="Horizontal">
+                        <TextBlock Text="Total"/>
+                        <TextBlock Text=":"/>
+                        <TextBlock Text="{Binding CartTotal}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="4" Orientation="Horizontal"
+                                HorizontalAlignment="Right" >
+                        <Button Grid.Row="4" Content="Cancel" Margin="5"
+                                Padding="5,2" Command="{Binding Cancel}"/>
+                        <Button Content="Checkout" Margin="5" IsDefault="True"
+                                Padding="5,2" Command="{Binding Checkout}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

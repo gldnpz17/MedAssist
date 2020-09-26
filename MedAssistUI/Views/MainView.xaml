@@ -1,0 +1,71 @@
+﻿<Window x:Class="MedAssistUI.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MedAssistUI.Views"
+        xmlns:cv="clr-namespace:MedAssistUI.Converters"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="MedAssist" Height="450" Width="800">
+    <Window.Resources>
+        <cv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--nav sidebar-->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="MedAssist" FontSize="27" Margin="5"
+                       FontWeight="Bold"/>
+            
+            <StackPanel Grid.Row="1"
+                        Visibility="{Binding UserIsEndUser, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Button Content="Healthcare" Margin="5" Padding="5,3"
+                        Command="{Binding OpenHealthcareView}"/>
+                <Button Content="Medications" Margin="5" Padding="5,3"
+                        Command="{Binding OpenMedicationStoreView}"/>
+                <Button Content="MedWallet" Margin="5" Padding="5,3"
+                        Command="{Binding OpenMedWalletView}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1"
+                        Visibility="{Binding UserIsHospital, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Button Content="Ambulance Requests" Margin="5" Padding="5,3"
+                        Command="{Binding OpenAmbulanceRequestView}"/>
+                <Button Content="Appointment Requests" Margin="5" Padding="5,3"
+                        Command="{Binding OpenAppointmentRequestView}"/>
+                <Button Content="Manage Doctors" Margin="5" Padding="5,3"
+                        Command="{Binding OpenManageDoctorsView}"/>
+                <Button Content="MedWallet Vouchers" Margin="5" Padding="5,3"
+                        Command="{Binding OpenManageVouchersView}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1"
+                        Visibility="{Binding UserIsPharmacy, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Button Content="Medication Requests" Margin="5" Padding="5,3"
+                        Command="{Binding OpenMedicationRequestView}"/>
+                <Button Content="MedWallet" Margin="5" Padding="5,3"
+                        Command="{Binding OpenPharmacyMedWalletView}"/>
+            </StackPanel>
+
+            <Button Grid.Row="3" Content="Log Out" Margin="5" Padding="5,3"
+                    VerticalAlignment="Bottom" Command="{Binding LogOut}"
+                    Visibility="{Binding UserIsLoggedIn, Converter={StaticResource BoolToVisibilityConverter}}"/>
+        </Grid>
+        
+        <!--Separator-->
+        <Rectangle Grid.Column="1" Stroke="Black" VerticalAlignment="Stretch"/>
+
+        <ContentControl Grid.Column="2" Grid.Row="0" 
+                        Content="{Binding ChildView}"/>
+    </Grid>
+</Window>

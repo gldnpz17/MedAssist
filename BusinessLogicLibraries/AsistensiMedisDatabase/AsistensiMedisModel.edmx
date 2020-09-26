@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DatabaseMedAssistModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DatabaseAmbulance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="HealthcareID" Type="uniqueidentifier" />
+          <Property Name="JumlahAmbulans" Type="int" />
+          <Property Name="HealthcareLatitude" Type="real" />
+          <Property Name="HealthcareLongitude" Type="real" />
+        </EntityType>
+        <EntityType Name="DatabaseDoctor">
+          <Key>
+            <PropertyRef Name="DoctorNumber" />
+          </Key>
+          <Property Name="DoctorNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DoctorHospital" Type="nvarchar" MaxLength="50" />
+          <Property Name="DoctorAge" Type="int" />
+          <Property Name="DoctorPicture" Type="image" />
+          <Property Name="DoctorType" Type="nvarchar" MaxLength="50" />
+          <Property Name="DoctorID" Type="uniqueidentifier" />
+          <Property Name="AppointmentMonday" Type="bit" Nullable="false" />
+          <Property Name="AppointmentTuesday" Type="bit" Nullable="false" />
+          <Property Name="AppointmentWednesday" Type="bit" Nullable="false" />
+          <Property Name="AppointmentThursday" Type="bit" Nullable="false" />
+          <Property Name="AppointmentFriday" Type="bit" Nullable="false" />
+          <Property Name="AppointmentSaturday" Type="bit" Nullable="false" />
+          <Property Name="AppointmentSunday" Type="bit" Nullable="false" />
+          <Property Name="HospitalLatitude" Type="real" />
+          <Property Name="HospitalLongitude" Type="real" />
+        </EntityType>
+        <EntityType Name="DatabaseMedicine">
+          <Key>
+            <PropertyRef Name="ObatID" />
+          </Key>
+          <Property Name="ObatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamaObat" Type="nvarchar" MaxLength="50" />
+          <Property Name="JenisObat" Type="nvarchar" MaxLength="50" />
+          <Property Name="GambarObat" Type="image" />
+          <Property Name="Manfaat" Type="nvarchar(max)" />
+          <Property Name="HargaObat" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Keterangan" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DatabasePharmacyStock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ApotekID" Type="uniqueidentifier" />
+          <Property Name="Obat" Type="nvarchar" MaxLength="50" />
+          <Property Name="StokObat" Type="int" />
+        </EntityType>
+        <EntityType Name="DatabaseRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IsLocked" Type="bit" />
+          <Property Name="SenderID" Type="uniqueidentifier" />
+          <Property Name="ReceiverID" Type="uniqueidentifier" />
+          <Property Name="LocationLatitude" Type="real" />
+          <Property Name="LocationLongitude" Type="real" />
+          <Property Name="LocationDetail" Type="nvarchar" MaxLength="80" />
+          <Property Name="Request" Type="nvarchar" MaxLength="50" />
+          <Property Name="RequestDetail" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DatabaseUser">
+          <Key>
+            <PropertyRef Name="UserNumber" />
+          </Key>
+          <Property Name="UserNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nama" Type="nvarchar" MaxLength="50" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="FotoProfil" Type="image" />
+          <Property Name="UserID" Type="uniqueidentifier" />
+          <Property Name="Alamat" Type="nvarchar(max)" />
+          <Property Name="TempatLahir" Type="nvarchar" MaxLength="50" />
+          <Property Name="TanggalLahir" Type="date" />
+          <Property Name="NomorTelepon" Type="bigint" />
+          <Property Name="TipeUser" Type="nvarchar" MaxLength="20" />
+          <Property Name="LatitudeUser" Type="real" />
+          <Property Name="LongitudeUser" Type="real" />
+          <Property Name="SaldoUser" Type="decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="DatabaseVoucher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoucherID" Type="uniqueidentifier" />
+          <Property Name="Nominal" Type="decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityContainer Name="DatabaseMedAssistModelStoreContainer">
+          <EntitySet Name="DatabaseAmbulance" EntityType="Self.DatabaseAmbulance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatabaseDoctor" EntityType="Self.DatabaseDoctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatabaseMedicine" EntityType="Self.DatabaseMedicine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatabasePharmacyStock" EntityType="Self.DatabasePharmacyStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatabaseRequest" EntityType="Self.DatabaseRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatabaseUser" EntityType="Self.DatabaseUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatabaseVoucher" EntityType="Self.DatabaseVoucher" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseMedAssistModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DatabaseAmbulance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="HealthcareID" Type="Guid" />
+          <Property Name="JumlahAmbulans" Type="Int32" />
+          <Property Name="HealthcareLatitude" Type="Single" />
+          <Property Name="HealthcareLongitude" Type="Single" />
+        </EntityType>
+        <EntityType Name="DatabaseDoctor">
+          <Key>
+            <PropertyRef Name="DoctorNumber" />
+          </Key>
+          <Property Name="DoctorNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DoctorHospital" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DoctorAge" Type="Int32" />
+          <Property Name="DoctorPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DoctorType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DoctorID" Type="Guid" />
+          <Property Name="AppointmentMonday" Type="Boolean" Nullable="false" />
+          <Property Name="AppointmentTuesday" Type="Boolean" Nullable="false" />
+          <Property Name="AppointmentWednesday" Type="Boolean" Nullable="false" />
+          <Property Name="AppointmentThursday" Type="Boolean" Nullable="false" />
+          <Property Name="AppointmentFriday" Type="Boolean" Nullable="false" />
+          <Property Name="AppointmentSaturday" Type="Boolean" Nullable="false" />
+          <Property Name="AppointmentSunday" Type="Boolean" Nullable="false" />
+          <Property Name="HospitalLatitude" Type="Single" />
+          <Property Name="HospitalLongitude" Type="Single" />
+        </EntityType>
+        <EntityType Name="DatabaseMedicine">
+          <Key>
+            <PropertyRef Name="ObatID" />
+          </Key>
+          <Property Name="ObatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamaObat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JenisObat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GambarObat" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Manfaat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HargaObat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Keterangan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DatabasePharmacyStock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ApotekID" Type="Guid" />
+          <Property Name="Obat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StokObat" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DatabaseRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IsLocked" Type="Boolean" />
+          <Property Name="SenderID" Type="Guid" />
+          <Property Name="ReceiverID" Type="Guid" />
+          <Property Name="LocationLatitude" Type="Single" />
+          <Property Name="LocationLongitude" Type="Single" />
+          <Property Name="LocationDetail" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Request" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DatabaseMedAssistEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DatabaseAmbulances" EntityType="Self.DatabaseAmbulance" />
+          <EntitySet Name="DatabaseDoctors" EntityType="Self.DatabaseDoctor" />
+          <EntitySet Name="DatabaseMedicines" EntityType="Self.DatabaseMedicine" />
+          <EntitySet Name="DatabasePharmacyStocks" EntityType="Self.DatabasePharmacyStock" />
+          <EntitySet Name="DatabaseRequests" EntityType="Self.DatabaseRequest" />
+          <EntitySet Name="DatabaseVouchers" EntityType="DatabaseMedAssistModel.DatabaseVoucher" />
+          <EntitySet Name="DatabaseUsers" EntityType="DatabaseMedAssistModel.DatabaseUser" />
+        </EntityContainer>
+        <EntityType Name="DatabaseVoucher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoucherID" Type="Guid" />
+          <Property Name="Nominal" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="DatabaseUser">
+          <Key>
+            <PropertyRef Name="UserNumber" />
+          </Key>
+          <Property Name="UserNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FotoProfil" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="UserID" Type="Guid" />
+          <Property Name="Alamat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TempatLahir" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TanggalLahir" Type="DateTime" Precision="0" />
+          <Property Name="NomorTelepon" Type="Int64" />
+          <Property Name="TipeUser" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LatitudeUser" Type="Single" />
+          <Property Name="LongitudeUser" Type="Single" />
+          <Property Name="SaldoUser" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseMedAssistModelStoreContainer" CdmEntityContainer="DatabaseMedAssistEntities">
+          <EntitySetMapping Name="DatabaseAmbulances">
+            <EntityTypeMapping TypeName="DatabaseMedAssistModel.DatabaseAmbulance">
+              <MappingFragment StoreEntitySet="DatabaseAmbulance">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HealthcareID" ColumnName="HealthcareID" />
+                <ScalarProperty Name="JumlahAmbulans" ColumnName="JumlahAmbulans" />
+                <ScalarProperty Name="HealthcareLatitude" ColumnName="HealthcareLatitude" />
+                <ScalarProperty Name="HealthcareLongitude" ColumnName="HealthcareLongitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatabaseDoctors">
+            <EntityTypeMapping TypeName="DatabaseMedAssistModel.DatabaseDoctor">
+              <MappingFragment StoreEntitySet="DatabaseDoctor">
+                <ScalarProperty Name="DoctorNumber" ColumnName="DoctorNumber" />
+                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+                <ScalarProperty Name="DoctorHospital" ColumnName="DoctorHospital" />
+                <ScalarProperty Name="DoctorAge" ColumnName="DoctorAge" />
+                <ScalarProperty Name="DoctorPicture" ColumnName="DoctorPicture" />
+                <ScalarProperty Name="DoctorType" ColumnName="DoctorType" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="AppointmentMonday" ColumnName="AppointmentMonday" />
+                <ScalarProperty Name="AppointmentTuesday" ColumnName="AppointmentTuesday" />
+                <ScalarProperty Name="AppointmentWednesday" ColumnName="AppointmentWednesday" />
+                <ScalarProperty Name="AppointmentThursday" ColumnName="AppointmentThursday" />
+                <ScalarProperty Name="AppointmentFriday" ColumnName="AppointmentFriday" />
+                <ScalarProperty Name="AppointmentSaturday" ColumnName="AppointmentSaturday" />
+                <ScalarProperty Name="AppointmentSunday" ColumnName="AppointmentSunday" />
+                <ScalarProperty Name="HospitalLatitude" ColumnName="HospitalLatitude" />
+                <ScalarProperty Name="HospitalLongitude" ColumnName="HospitalLongitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatabaseMedicines">
+            <EntityTypeMapping TypeName="DatabaseMedAssistModel.DatabaseMedicine">
+              <MappingFragment StoreEntitySet="DatabaseMedicine">
+                <ScalarProperty Name="ObatID" ColumnName="ObatID" />
+                <ScalarProperty Name="NamaObat" ColumnName="NamaObat" />
+                <ScalarProperty Name="JenisObat" ColumnName="JenisObat" />
+                <ScalarProperty Name="GambarObat" ColumnName="GambarObat" />
+                <ScalarProperty Name="Manfaat" ColumnName="Manfaat" />
+                <ScalarProperty Name="HargaObat" ColumnName="HargaObat" />
+                <ScalarProperty Name="Keterangan" ColumnName="Keterangan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatabasePharmacyStocks">
+            <EntityTypeMapping TypeName="DatabaseMedAssistModel.DatabasePharmacyStock">
+              <MappingFragment StoreEntitySet="DatabasePharmacyStock">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ApotekID" ColumnName="ApotekID" />
+                <ScalarProperty Name="Obat" ColumnName="Obat" />
+                <ScalarProperty Name="StokObat" ColumnName="StokObat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatabaseRequests">
+            <EntityTypeMapping TypeName="DatabaseMedAssistModel.DatabaseRequest">
+              <MappingFragment StoreEntitySet="DatabaseRequest">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+                <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
+                <ScalarProperty Name="LocationLatitude" ColumnName="LocationLatitude" />
+                <ScalarProperty Name="LocationLongitude" ColumnName="LocationLongitude" />
+                <ScalarProperty Name="LocationDetail" ColumnName="LocationDetail" />
+                <ScalarProperty Name="Request" ColumnName="Request" />
+                <ScalarProperty Name="RequestDetail" ColumnName="RequestDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatabaseVouchers">
+            <EntityTypeMapping TypeName="DatabaseMedAssistModel.DatabaseVoucher">
+              <MappingFragment StoreEntitySet="DatabaseVoucher">
+                <ScalarProperty Name="Nominal" ColumnName="Nominal" />
+                <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatabaseUsers">
+            <EntityTypeMapping TypeName="DatabaseMedAssistModel.DatabaseUser">
+              <MappingFragment StoreEntitySet="DatabaseUser">
+                <ScalarProperty Name="SaldoUser" ColumnName="SaldoUser" />
+                <ScalarProperty Name="LongitudeUser" ColumnName="LongitudeUser" />
+                <ScalarProperty Name="LatitudeUser" ColumnName="LatitudeUser" />
+                <ScalarProperty Name="TipeUser" ColumnName="TipeUser" />
+                <ScalarProperty Name="NomorTelepon" ColumnName="NomorTelepon" />
+                <ScalarProperty Name="TanggalLahir" ColumnName="TanggalLahir" />
+                <ScalarProperty Name="TempatLahir" ColumnName="TempatLahir" />
+                <ScalarProperty Name="Alamat" ColumnName="Alamat" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FotoProfil" ColumnName="FotoProfil" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Nama" ColumnName="Nama" />
+                <ScalarProperty Name="UserNumber" ColumnName="UserNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
